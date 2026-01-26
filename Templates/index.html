@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Churn Prediction App</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<h2>Churn Prediction App</h2>
+
+<form method="post">
+    <input type="number" name="age" min="10" max="100" placeholder="Enter Age" required>
+    <input type="number" name="tenure" min="0" max="130" placeholder="Enter Tenure" required>
+    <input type="number" name="monthlycharge" min="30" max="150" placeholder="Enter Monthly Charge" required>
+
+<div class="select-wrap">
+    <select name="gender" required>
+        <option value="" disabled selected>Select Gender</option>
+        <option value="0">Male</option>
+        <option value="1">Female</option>
+    </select>
+</div>
+
+    <button type="submit">Predict</button>
+</form>
+
+{% if prediction %}
+    <p><strong>Predicted:</strong> {{ prediction }}</p>
+{% endif %}
+
+{% if show_balloons %}
+<script>
+confetti({
+    particleCount: 150,
+    spread: 80,
+    origin: { y: 0.6 }
+});
+</script>
+{% endif %}
+
+</body>
+</html>
